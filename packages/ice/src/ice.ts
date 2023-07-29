@@ -160,15 +160,14 @@ export class Connection {
         this.protocols.push(protocol);
 
         // # add host candidate
-        const candidateAddress: Address = [address, protocol.getExtraInfo()[1]];
 
         protocol.localCandidate = new Candidate(
-          candidateFoundation("host", "udp", candidateAddress[0]),
+          candidateFoundation("host", "udp", address),
           component,
           "udp",
           candidatePriority(component, "host"),
-          candidateAddress[0],
-          candidateAddress[1],
+          address,
+          protocol.getExtraInfo()[1],
           "host"
         );
 
